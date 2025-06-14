@@ -7,7 +7,7 @@ router.get("/", (req, res) =>{
 })
 
 router.get("/about", (req, res) =>{
-    res.end('esta es la ruta de about')
+    res.send('esta es la ruta de about')
 })
 
 
