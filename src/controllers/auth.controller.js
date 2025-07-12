@@ -121,3 +121,25 @@ export const login = async(req, res) => {
         return res.status(500).json({message: error.message}) 
     }
 }
+
+export const logout = async(req, res) => {
+    try {
+        //limpiar la cookie para matar la sesion
+        res.cookie('token','', {expires: new Date(0)})  //limpiar setenadola con un string vacio y con una ffecha de expiracion pasada
+
+        res.status(200).json({message:'logout success'})
+        
+    } catch (error) {
+         console.log(error);
+        return res.status(500).json({message: error.message})
+    }
+}
+
+export const profile = async(req, res)=>{
+    try {
+        const userFound = await User.findById(req.user.id)
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: error.message})
+    }
+}
