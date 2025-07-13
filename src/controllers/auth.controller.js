@@ -4,6 +4,7 @@ import crypto from 'crypto';
 import { createAccessToken } from '../helpers/jwt.js';
 import transport from '../helpers/mailer.js';
 import jwt from 'jsonwebtoken';
+import { success } from 'zod/v4';
 
 
 export const register = async(req, res) => {
@@ -137,9 +138,84 @@ export const logout = async(req, res) => {
 
 export const profile = async(req, res)=>{
     try {
-        const userFound = await User.findById(req.user.id)
+        const userFound = await User.findById(req.user.id);
+
+        if(!userFound) return res.status(404).json({message: 'user not found'})
+
+        return res.status(200).json({
+            id: userFound.id,
+            username: userFound.username,
+            email: userFound.email,
+            profileImage: userFound.profileImage,
+            createdAt: userFound.createdAt,
+            updatedAt: userFound.updatedAt
+        })    
+
     } catch (error) {
         console.log(error);
+        return res.status(500).json({message: error.message})
+    }
+}
+
+export const verifyToken = async(req, res) =>{
+    try {
+        
+        
+        let token;
+
+        if(!token && req.cookies?.token){
+        token = req.cookies.token
+      } else {
+        return res.status(401).json({message:'no token provide'})
+      }
+
+
+      const decoded = jwt.verify(token, process.env.SECRET_KEY);
+      const userFound = await User.findById(decoded.id);
+
+      if(!userFound) return res.status(401);
+      return res.json({
+        id: userFound.id,
+        username: userFound.username,
+        email: userFound.email,
+        isVerified: userFound.isVerified
+
+      })
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: error.message})
+    }
+}
+
+export const verifyEmail = async(req, res)=>{
+    try {
+        
+        const { token } = req.query;
+
+        const user = await User.findOne({verificationToken:token});
+
+        if(!user){
+            return res.status(400).json({message:'invalid or expired token'})
+        }
+
+        user.isVerified = true;
+        user.verificationToken = undefined;
+        await user.save()
+
+        return res.status(200).json({
+            success: true,
+            message: 'verify email success',
+            user:{
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                isVerified: user.isVerified
+            }
+        })
+
+    } catch (error) {
+         console.log(error);
         return res.status(500).json({message: error.message})
     }
 }

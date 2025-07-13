@@ -1,0 +1,1 @@
+//vamos a rmar el controlador que suba la imagen y el que pide la imagen del ususario
