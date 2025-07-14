@@ -161,14 +161,15 @@ export const verifyToken = async(req, res) =>{
     try {
         
         
+        const authHeaders = req.headers.authorization;
+
         let token;
 
-        if(!token && req.cookies?.token){
-        token = req.cookies.token
-      } else {
-        return res.status(401).json({message:'no token provide'})
-      }
-
+        if(authHeaders && authHeaders.startswith('Bearer')){
+            token= authHeaders.split('')[1];
+        } else{
+            return res.status(401).json({message:'no token provided'})
+        }
 
       const decoded = jwt.verify(token, process.env.SECRET_KEY);
       const userFound = await User.findById(decoded.id);
