@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     },
     profileImage:{
         type:String,
-        default:"",
+        default:"https://es.dreamstime.com/l%C3%ADnea-icono-del-negro-avatar-perfil-de-usuario-image121102131",
     },
     isVerified:{
         type:Boolean,
