@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "8f859da1-8d5c-4f07-950c-a3b3f4883ac3",
+		"name": "BACK2-TODO-APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44516830"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"username\":\"ivanadrian\",\r\n   \"email\": \"ivanarroyo3083@hotmail.com\",\r\n   \"password\":\"123456\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n   \"email\": \"ivanarroyo3083@hotmail.com\",\r\n   \"password\":\"456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n  \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n  \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n  \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/verify-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"verify-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n  \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/verify-email?token=5987295b77c8250811b027d937367a8f91ee7ae3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"verify-email"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "5987295b77c8250811b027d937367a8f91ee7ae3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profilePicture",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2E5MTk3ZGNjMjYyZTAyODBmYzkxMyIsInVzZXJuYW1lIjoiaXZhbmFkcmlhbiIsImVtYWlsIjoiaXZhbmFycm95bzMwODNAaG90bWFpbC5jb20iLCJpYXQiOjE3NTI4ODA5MjEsImV4cCI6MTc1Mjg4NDUyMX0.HFLjJPasTLFlkvgVbvLWOBaFu0lfVIuK7OwHxoAl4ns",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "iconProfile",
+									"type": "file",
+									"src": "/C:/Users/Iván/Desktop/fotos nuestras/1366_2000.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/upload-profile-image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"upload-profile-image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "request-reset-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2E5MTk3ZGNjMjYyZTAyODBmYzkxMyIsInVzZXJuYW1lIjoiaXZhbmFkcmlhbiIsImVtYWlsIjoiaXZhbmFycm95bzMwODNAaG90bWFpbC5jb20iLCJpYXQiOjE3NTI4ODA5MjEsImV4cCI6MTc1Mjg4NDUyMX0.HFLjJPasTLFlkvgVbvLWOBaFu0lfVIuK7OwHxoAl4ns",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"ivanarroyo3083@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/request-password-reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"request-password-reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2E5MTk3ZGNjMjYyZTAyODBmYzkxMyIsInVzZXJuYW1lIjoiaXZhbmFkcmlhbiIsImVtYWlsIjoiaXZhbmFycm95bzMwODNAaG90bWFpbC5jb20iLCJpYXQiOjE3NTI4ODA5MjEsImV4cCI6MTc1Mjg4NDUyMX0.HFLjJPasTLFlkvgVbvLWOBaFu0lfVIuK7OwHxoAl4ns",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"newPassword\" : \"456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2E5MTk3ZGNjMjYyZTAyODBmYzkxMyIsInB1cnBvc2UiOiJyZXNldCBwYXNzd29yZCIsImlhdCI6MTc1MjkzNjQzMCwiZXhwIjoxNzUyOTQwMDMwfQ.yuF690oXqoW2hINXmxOvifgmHZyPT_E2Gwi2ByJX04k",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"reset-password",
+								"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2E5MTk3ZGNjMjYyZTAyODBmYzkxMyIsInB1cnBvc2UiOiJyZXNldCBwYXNzd29yZCIsImlhdCI6MTc1MjkzNjQzMCwiZXhwIjoxNzUyOTQwMDMwfQ.yuF690oXqoW2hINXmxOvifgmHZyPT_E2Gwi2ByJX04k"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfileImage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/profile-image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"profile-image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TASK",
+			"item": []
+		}
+	]
+}

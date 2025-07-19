@@ -5,6 +5,7 @@ import {login,  logout,  profile,  register, verifyEmail, verifyToken } from "..
 import { authRequired } from "../middlewares/validatetoken.js";
 import uploadIconProfileImage from "../helpers/multer.config.iconProfile.js";
 import { getProfileImage, uploadProfileImage,  } from "../controllers/profile.controller.js";
+import { requestPasswordReset, resetPassword } from "../controllers/passwordReset.controllers.js";
 
 const router = express.Router(); //creo una instancia de express.Router
 
@@ -15,13 +16,18 @@ router.get('/profile', authRequired, profile);
 router.get('/verify-token', verifyToken);
 router.get('/verify-email', verifyEmail);
 
+//rutas para solicitar el reset de la password
+router.post('/request-password-reset', requestPasswordReset);
+
+//ruta para actualizar la contraseña
+router.post('/reset-password/:token', resetPassword);
+
 // estas son las rutas para la imagen del perfil para el usuario
 router.post('/upload-profile-image', 
     authRequired,
     uploadIconProfileImage.single("iconProfile"),
     uploadProfileImage
 );// sube la imagen del perrfil
-
 router.get('/profile-image', authRequired, getProfileImage)//pide la imagen de perfil
 
 
