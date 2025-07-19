@@ -5,7 +5,7 @@ import {login,  logout,  profile,  register, verifyEmail, verifyToken } from "..
 import { authRequired } from "../middlewares/validatetoken.js";
 import uploadIconProfileImage from "../helpers/multer.config.iconProfile.js";
 import { getProfileImage, uploadProfileImage,  } from "../controllers/profile.controller.js";
-import { requestPasswordReset, resetPassword } from "../controllers/passwordReset.controllers.js";
+import { requestPasswordReset, resetPassword } from "../controllers/passwordReset.controller.js";
 
 const router = express.Router(); //creo una instancia de express.Router
 
